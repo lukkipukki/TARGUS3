@@ -6,40 +6,47 @@
 <title>Ticket</title>
 
 <style>
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial;
+  font-family: -apple-system, BlinkMacSystemFont, "Inter",
+               "Segoe UI", Roboto, Arial, sans-serif;
   background: #f2f2f7;
+  color: #111;
 }
 
+/* ===== TOP BAR ===== */
 .topbar {
   height: 56px;
   background: #5b3aa4;
 }
 
+/* ===== LAYOUT ===== */
 .wrapper {
   padding: 16px;
 }
 
 .card {
   background: #fff;
-  border-radius: 18px;
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
 }
 
 /* ===== HERO ===== */
 .hero {
-  height: 170px;
-  padding: 16px;
-  color: white;
+  min-height: 190px;
+  padding: 18px;
+  color: #fff;
   background:
     linear-gradient(
       to bottom,
-      rgba(40,30,80,0.15),
-      rgba(40,30,80,0.85)
+      rgba(70,50,140,0.25),
+      rgba(70,50,140,0.9)
     ),
     url("hero.jpg");
   background-size: cover;
@@ -51,79 +58,98 @@ body {
 
 .hero h1 {
   margin: 0;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 700;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.2px;
 }
 
 .hero p {
-  margin: 2px 0 0;
+  margin: 4px 0 0;
   font-size: 13px;
   opacity: 0.95;
 }
 
+.hero .sub {
+  margin-top: 2px;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.hero-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
 .price {
-  margin-top: 6px;
   font-size: 14px;
   font-weight: 600;
 }
 
-/* ===== BUTTON ===== */
+/* ===== CTA BUTTON ===== */
 .redeem {
-  margin: 16px;
+  margin: 18px 16px 14px;
   background: #5b3aa4;
   color: #fff;
   text-align: center;
-  padding: 14px;
-  border-radius: 14px;
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0.4px;
+  padding: 16px;
+  border-radius: 16px;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  box-shadow: 0 4px 10px rgba(91,58,164,0.35);
 }
 
 /* ===== NOTE ===== */
 .note {
-  margin: 0 16px 16px;
-  font-size: 12px;
-  color: #666;
+  margin: 0 16px 18px;
+  font-size: 12.5px;
+  color: #6b6b6b;
   display: flex;
-  gap: 6px;
-  line-height: 1.4;
+  gap: 8px;
+  line-height: 1.45;
+}
+
+.note strong {
+  color: #444;
+  font-weight: 600;
 }
 
 /* ===== ACTIONS ===== */
 .actions {
   display: flex;
   gap: 10px;
-  padding: 0 16px 16px;
+  padding: 0 16px 18px;
+  flex-wrap: wrap;
 }
 
 .action {
-  flex: 1;
-  background: #f3f0fb;
-  border-radius: 12px;
-  padding: 10px 6px;
-  font-size: 12px;
-  text-align: center;
+  background: #f1edfb;
+  border-radius: 999px;
+  padding: 10px 14px;
+  font-size: 12.5px;
   color: #5b3aa4;
-  font-weight: 500;
+  font-weight: 600;
+  white-space: nowrap;
 }
 
 /* ===== DETAILS ===== */
 .section {
-  padding: 0 16px 16px;
+  padding: 0 16px 20px;
 }
 
 .label {
   font-size: 12px;
-  color: #999;
+  color: #9b9b9b;
   margin-bottom: 4px;
 }
 
 .value {
-  font-size: 14px;
-  font-weight: 500;
-  color: #111;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: #1c1c1e;
+  margin-bottom: 14px;
 }
 </style>
 </head>
@@ -136,16 +162,23 @@ body {
   <div class="card">
 
     <div class="hero">
-      <h1>EYL - Ennakkolippu 6.2.2026</h1>
+      <h1>EYL – Ennakkolippu 6.2.2026</h1>
       <p>Vanhojen Tanssit @ Finlandia-Talo</p>
-      <div class="price">45,00 €</div>
+      <p class="sub">Loput liput myydään normaali linkistä</p>
+
+      <div class="hero-footer">
+        <div class="price">45,00 €</div>
+      </div>
     </div>
 
     <div class="redeem">MARK TICKET AS USED</div>
 
     <div class="note">
-      ⓘ Ticket must only be used during inspection or while redeeming it.
-      <strong>Do not use the ticket in advance</strong>
+      <span>ⓘ</span>
+      <span>
+        Ticket must only be used during inspection or while redeeming it.
+        <strong>Do not use the ticket in advance</strong>
+      </span>
     </div>
 
     <div class="actions">
@@ -156,13 +189,11 @@ body {
 
     <div class="section">
       <div class="label">Ticket ID</div>
-      <div class="value">fa14c0850a15a...</div>
-
-      <br>
+      <div class="value">fa14c0850a15a…</div>
 
       <div class="label">Event</div>
       <div class="value">
-        Viralliset Vanhojenjatkot @ Finlandia-Talo - PE<br>
+        Viralliset Vanhojenjatkot @ Finlandia-Talo – PE<br>
         6.2.2026
       </div>
     </div>
