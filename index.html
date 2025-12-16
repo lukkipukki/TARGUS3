@@ -14,7 +14,10 @@
 :root {
   --purple: #5b3aa4;
   --cyan: #3fd0d4;
+  --purple-light: #f1edfb;
   --bg: #f2f2f7;
+  --text-main: #1c1c1e;
+  --text-sub: #6b6b6b;
 }
 
 body {
@@ -22,6 +25,8 @@ body {
   background: var(--bg);
   font-family: -apple-system, BlinkMacSystemFont, "Inter",
                "Segoe UI", Roboto, Arial, sans-serif;
+  color: var(--text-main);
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 /* ===== TOP BAR ===== */
@@ -31,16 +36,53 @@ body {
   background: var(--purple);
   display: flex;
   align-items: center;
-  padding: 0 12px;
+  padding-left: 8px;
+  padding-right: 12px;
   color: #fff;
 }
 
-.back { font-size: 20px; padding-right: 10px; }
-.title-wrap { flex: 1; font-size: 15px; font-weight: 600; }
-.icons { display: flex; gap: 14px; }
+.back {
+  font-size: 20px;
+  padding: 0 10px;
+  opacity: 0.95;
+}
 
-/* ===== CARD ===== */
-.wrapper { padding: 16px; }
+.title-wrap {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 15px;
+  font-weight: 600;
+  padding-right: 10px;
+}
+
+.title-wrap::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 36px;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(91,58,164,0),
+    rgba(91,58,164,1)
+  );
+}
+
+.icons {
+  display: flex;
+  gap: 14px;
+  font-size: 18px;
+  opacity: 0.95;
+}
+
+/* ===== LAYOUT ===== */
+.wrapper {
+  padding: 16px;
+}
+
 .card {
   background: #fff;
   border-radius: 22px;
@@ -51,22 +93,47 @@ body {
 /* ===== HERO ===== */
 .hero {
   min-height: 200px;
-  padding: 18px;
+  padding: 18px 18px 20px;
   color: #fff;
   background:
-    linear-gradient(to bottom, rgba(80,60,150,0.25), rgba(80,60,150,0.92)),
+    linear-gradient(
+      to bottom,
+      rgba(80,60,150,0.25),
+      rgba(80,60,150,0.92)
+    ),
     url("hero.jpg");
   background-size: cover;
+  background-position: center;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
 }
 
-.hero h1 { margin: 0; font-size: 16.5px; }
-.hero p { margin: 4px 0 0; font-size: 13.5px; }
-.price { margin-top: 12px; font-weight: 600; }
+.hero h1 {
+  margin: 0;
+  font-size: 16.5px;
+  font-weight: 700;
+}
 
-/* ===== BUTTON ===== */
+.hero p {
+  margin: 4px 0 0;
+  font-size: 13.5px;
+  opacity: 0.96;
+}
+
+.hero .sub {
+  margin-top: 2px;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.price {
+  margin-top: 12px;
+  font-size: 14.5px;
+  font-weight: 600;
+}
+
+/* ===== CTA BUTTON ===== */
 .redeem {
   margin: 20px 16px 16px;
   background: var(--purple);
@@ -76,12 +143,20 @@ body {
   border-radius: 18px;
   font-size: 15px;
   font-weight: 700;
+  letter-spacing: 0.7px;
+  box-shadow: 0 6px 14px rgba(91,58,164,0.35);
+  transition: background 0.25s ease, box-shadow 0.25s ease;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
 }
 
-.redeem.cyan { background: var(--cyan); }
+.redeem.cyan {
+  background: var(--cyan);
+  box-shadow: 0 6px 14px rgba(63,208,212,0.4);
+}
 
-/* ===== OVERLAY ===== */
+/* ===== SUCCESS OVERLAY ===== */
 .overlay {
   position: fixed;
   inset: 0;
@@ -116,21 +191,17 @@ body {
   animation: videoOut 0.35s ease forwards;
 }
 
-/* === SVG === */
-.circle {
-  stroke-dasharray: 440;
-  stroke-dashoffset: 440;
-  animation: drawCircle 0.55s ease forwards;
+/* ===== SVG DRAW ===== */
+.line {
+  stroke-dasharray: 300;
+  stroke-dashoffset: 300;
+  animation: draw 0.55s ease forwards;
 }
 
-.path {
-  stroke-dasharray: 140;
-  stroke-dashoffset: 140;
-  animation: drawPath 0.45s ease forwards;
-  animation-delay: 0.25s;
+.line.delay {
+  animation-delay: 0.18s;
 }
 
-/* === KEYFRAMES === */
 @keyframes videoIn {
   from {
     transform: scale(1.05);
@@ -153,11 +224,7 @@ body {
   }
 }
 
-@keyframes drawCircle {
-  to { stroke-dashoffset: 0; }
-}
-
-@keyframes drawPath {
+@keyframes draw {
   to { stroke-dashoffset: 0; }
 }
 </style>
@@ -167,7 +234,7 @@ body {
 
 <div class="topbar">
   <div class="back">←</div>
-  <div class="title-wrap">Viralliset Vanhojenjatkot</div>
+  <div class="title-wrap">Viralliset Vanhojenjatkot @ Finlandia-Talo</div>
   <div class="icons">📍 🔍 ❤️</div>
 </div>
 
@@ -177,6 +244,7 @@ body {
     <div class="hero">
       <h1>EYL – Ennakkolippu 6.2.2026</h1>
       <p>Vanhojen Tanssit @ Finlandia-Talo</p>
+      <p class="sub">Loput liput myydään normaali linkistä</p>
       <div class="price">45,00 €</div>
     </div>
 
@@ -187,22 +255,20 @@ body {
   </div>
 </div>
 
-<!-- OVERLAY -->
+<!-- SUCCESS OVERLAY -->
 <div class="overlay" id="overlay">
   <div class="video-anim">
-    <svg viewBox="0 0 120 120" width="260" height="260">
-      <circle cx="60" cy="60" r="52"
-        fill="none"
-        stroke="#3fd0d4"
-        stroke-width="8"
-        class="circle"/>
-      <path d="M34 62 L54 78 L86 44"
-        fill="none"
-        stroke="#3fd0d4"
-        stroke-width="8"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="path"/>
+    <svg viewBox="0 0 200 200" width="260" height="260" fill="none">
+      <path d="M40 100 C70 40, 130 40, 160 100"
+            stroke="#3fd0d4"
+            stroke-width="10"
+            stroke-linecap="round"
+            class="line"/>
+      <path d="M40 100 C70 160, 130 160, 160 100"
+            stroke="#3fd0d4"
+            stroke-width="10"
+            stroke-linecap="round"
+            class="line delay"/>
     </svg>
   </div>
 </div>
@@ -220,15 +286,13 @@ btn.addEventListener("click", () => {
   } else if (step === 1) {
     overlay.classList.add("active");
 
-    setTimeout(() => {
-      overlay.classList.add("exit");
-    }, 900);
+    setTimeout(() => overlay.classList.add("exit"), 900);
 
     setTimeout(() => {
       overlay.classList.remove("active", "exit");
       btn.textContent = "TICKET USED";
-      btn.style.opacity = "0.6";
       btn.style.pointerEvents = "none";
+      btn.style.opacity = "0.6";
     }, 1350);
 
     step = 2;
