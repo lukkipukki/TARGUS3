@@ -252,16 +252,22 @@ body {
 
 /* ===== VIDEO STYLE ANIMATION ===== */
 .video-anim {
-  animation: containerIn 0.45s cubic-bezier(.2,1.4,.4,1);
+  animation: videoIn 0.35s ease-out;
 }
 
 .overlay.exit .video-anim {
   animation: containerOut 0.35s ease forwards;
 }
 
-@keyframes containerIn {
-  from { transform: scale(0.85); opacity: 0; }
-  to   { transform: scale(1); opacity: 1; }
+@keyframes videoIn {
+  from {
+    transform: scale(0.92);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 @keyframes containerOut {
