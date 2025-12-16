@@ -14,8 +14,10 @@
 :root {
   --purple: #5b3aa4;
   --cyan: #3fd0d4;
+  --purple-light: #f1edfb;
   --bg: #f2f2f7;
   --text-main: #1c1c1e;
+  --text-sub: #6b6b6b;
 }
 
 body {
@@ -24,6 +26,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Inter",
                "Segoe UI", Roboto, Arial, sans-serif;
   color: var(--text-main);
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 /* ===== TOP BAR ===== */
@@ -33,15 +36,52 @@ body {
   background: var(--purple);
   display: flex;
   align-items: center;
-  padding: 0 12px;
+  padding-left: 8px;
+  padding-right: 12px;
   color: #fff;
 }
 
-.back { font-size: 20px; padding-right: 10px; }
-.title-wrap { flex: 1; font-size: 15px; font-weight: 600; }
+.back {
+  font-size: 20px;
+  padding: 0 10px;
+  opacity: 0.95;
+}
+
+.title-wrap {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 15px;
+  font-weight: 600;
+  padding-right: 10px;
+}
+
+.title-wrap::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 36px;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(91,58,164,0),
+    rgba(91,58,164,1)
+  );
+}
+
+.icons {
+  display: flex;
+  gap: 14px;
+  font-size: 18px;
+  opacity: 0.95;
+}
 
 /* ===== LAYOUT ===== */
-.wrapper { padding: 16px; }
+.wrapper {
+  padding: 16px;
+}
 
 .card {
   background: #fff;
@@ -53,20 +93,45 @@ body {
 /* ===== HERO ===== */
 .hero {
   min-height: 200px;
-  padding: 18px;
+  padding: 18px 18px 20px;
   color: #fff;
   background:
-    linear-gradient(to bottom, rgba(80,60,150,0.25), rgba(80,60,150,0.92)),
-    url("hero.png");
+    linear-gradient(
+      to bottom,
+      rgba(80,60,150,0.25),
+      rgba(80,60,150,0.92)
+    ),
+    url("hero.jpg");
   background-size: cover;
+  background-position: center;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
 }
 
-.hero h1 { margin: 0; font-size: 16.5px; }
-.hero p { margin: 4px 0 0; font-size: 13.5px; }
-.price { margin-top: 12px; font-weight: 600; }
+.hero h1 {
+  margin: 0;
+  font-size: 16.5px;
+  font-weight: 700;
+}
+
+.hero p {
+  margin: 4px 0 0;
+  font-size: 13.5px;
+  opacity: 0.96;
+}
+
+.hero .sub {
+  margin-top: 2px;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.price {
+  margin-top: 12px;
+  font-size: 14.5px;
+  font-weight: 600;
+}
 
 /* ===== CTA BUTTON ===== */
 .redeem {
@@ -78,12 +143,90 @@ body {
   border-radius: 18px;
   font-size: 15px;
   font-weight: 700;
+  letter-spacing: 0.7px;
+  box-shadow: 0 6px 14px rgba(91,58,164,0.35);
+  transition: background 0.25s ease, box-shadow 0.25s ease;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  user-select: none;
 }
 
-.redeem.cyan { background: var(--cyan); }
+.redeem.cyan {
+  background: var(--cyan);
+  box-shadow: 0 6px 14px rgba(63,208,212,0.4);
+}
 
-/* ===== OVERLAY ===== */
+/* ===== NOTE ===== */
+.note {
+  margin: 0 16px 20px;
+  font-size: 12.5px;
+  color: var(--text-sub);
+  display: flex;
+  gap: 10px;
+  line-height: 1.5;
+}
+
+.note strong {
+  color: #4a4a4a;
+  font-weight: 600;
+}
+
+/* ===== ACTIONS ===== */
+.actions {
+  display: flex;
+  gap: 10px;
+  padding: 0 16px 20px;
+  flex-wrap: wrap;
+}
+
+.action {
+  background: var(--purple-light);
+  border-radius: 999px;
+  padding: 11px 16px;
+  font-size: 12.8px;
+  color: var(--purple);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ===== DETAILS ===== */
+.section {
+  padding: 0 16px 20px;
+}
+
+.label {
+  font-size: 12px;
+  color: #9b9b9b;
+  margin-bottom: 4px;
+}
+
+.value {
+  font-size: 14.8px;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 14px;
+  line-height: 1.4;
+}
+
+.ticket-id-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.copy-icon {
+  font-size: 18px;
+  opacity: 0.55;
+  padding-top: 18px;
+}
+
+/* ===== EXTRA SCROLL ===== */
+.scroll-spacer {
+  height: 220px;
+}
+
+/* ===== SUCCESS OVERLAY ===== */
 .overlay {
   position: fixed;
   inset: 0;
@@ -107,9 +250,9 @@ body {
   opacity: 0;
 }
 
-/* ===== VIDEO-STYLE SVG ANIMATION ===== */
+/* ===== VIDEO STYLE ANIMATION ===== */
 .video-anim {
-  animation: containerIn 0.4s cubic-bezier(.2,1.4,.4,1);
+  animation: containerIn 0.45s cubic-bezier(.2,1.4,.4,1);
 }
 
 .overlay.exit .video-anim {
@@ -133,11 +276,11 @@ body {
 }
 
 .p1 { animation-delay: 0.05s; }
-.p2 { animation-delay: 0.1s; }
+.p2 { animation-delay: 0.10s; }
 .p3 { animation-delay: 0.18s; }
 .p4 { animation-delay: 0.26s; }
 .p5 { animation-delay: 0.32s; }
-.p6 { animation-delay: 0.4s; }
+.p6 { animation-delay: 0.40s; }
 
 @keyframes partIn {
   to {
@@ -152,7 +295,10 @@ body {
 
 <div class="topbar">
   <div class="back">←</div>
-  <div class="title-wrap">Viralliset Vanhojenjatkot</div>
+  <div class="title-wrap">
+    Viralliset Vanhojenjatkot @ Finlandia-Talo
+  </div>
+  <div class="icons">📍 🔍 ❤️</div>
 </div>
 
 <div class="wrapper">
@@ -161,6 +307,7 @@ body {
     <div class="hero">
       <h1>EYL – Ennakkolippu 6.2.2026</h1>
       <p>Vanhojen Tanssit @ Finlandia-Talo</p>
+      <p class="sub">Loput liput myydään normaali linkistä</p>
       <div class="price">45,00 €</div>
     </div>
 
@@ -168,26 +315,52 @@ body {
       MARK TICKET AS USED
     </div>
 
+    <div class="note">
+      <span>ⓘ</span>
+      <span>
+        Ticket must only be used during inspection or while redeeming it.
+        <strong>Do not use the ticket in advance</strong>
+      </span>
+    </div>
+
+    <div class="actions">
+      <div class="action">✉️ Send ticket</div>
+      <div class="action">📅 Add to calendar</div>
+      <div class="action">ℹ️ Show description</div>
+    </div>
+
+    <div class="section">
+      <div class="ticket-id-row">
+        <div>
+          <div class="label">Ticket ID</div>
+          <div class="value">fa14c0850a15ajk34lace010lep7ba20a</div>
+        </div>
+        <div class="copy-icon">📋</div>
+      </div>
+
+      <div class="label">Event</div>
+      <div class="value">
+        Viralliset Vanhojenjatkot @ Finlandia-Talo – PE<br>
+        6.2.2026
+      </div>
+    </div>
+
   </div>
 </div>
 
-<!-- OVERLAY WITH VIDEO SVG -->
+<div class="scroll-spacer"></div>
+
+<!-- SUCCESS OVERLAY -->
 <div class="overlay" id="successOverlay">
   <div class="video-anim">
-    <svg viewBox="0 0 200 200" width="180" height="180">
+    <svg viewBox="0 0 200 200" width="160" height="160">
       <rect x="10" y="10" rx="18" ry="18" width="180" height="180" fill="#ffffff"/>
-
       <rect class="part p1" x="10" y="10" width="70" height="55" fill="#ff8a00"/>
       <rect class="part p2" x="120" y="10" width="70" height="55" fill="#ff8a00"/>
-
-      <rect class="part p3"
-            x="85" y="20" width="30" height="30"
-            fill="#4c63ff"
+      <rect class="part p3" x="85" y="20" width="30" height="30" fill="#4c63ff"
             transform="rotate(45 100 35)" />
-
       <polygon class="part p4" points="10,65 80,65 10,135" fill="#5a3a2e"/>
       <polygon class="part p5" points="190,65 120,65 190,135" fill="#5a3a2e"/>
-
       <rect class="part p6" x="10" y="135" width="180" height="55" fill="#d32f2f"/>
     </svg>
   </div>
@@ -214,8 +387,8 @@ redeemBtn.addEventListener("click", () => {
     setTimeout(() => {
       overlay.classList.remove("active", "exit");
       redeemBtn.textContent = "TICKET USED";
-      redeemBtn.style.opacity = "0.6";
       redeemBtn.style.pointerEvents = "none";
+      redeemBtn.style.opacity = "0.6";
     }, 1400);
 
     step = 2;
