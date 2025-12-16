@@ -34,6 +34,50 @@ body {
   height: calc(56px + env(safe-area-inset-top));
   padding-top: env(safe-area-inset-top);
   background: var(--purple);
+  display: flex;
+  align-items: center;
+  padding-left: 8px;
+  padding-right: 12px;
+  color: #fff;
+}
+
+.back {
+  font-size: 20px;
+  padding: 0 10px;
+  opacity: 0.95;
+}
+
+/* title container with fade */
+.title-wrap {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 15px;
+  font-weight: 600;
+  padding-right: 10px;
+}
+
+/* fade effect */
+.title-wrap::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 36px;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(91,58,164,0),
+    rgba(91,58,164,1)
+  );
+}
+
+.icons {
+  display: flex;
+  gap: 14px;
+  font-size: 18px;
+  opacity: 0.95;
 }
 
 /* ===== LAYOUT ===== */
@@ -71,7 +115,6 @@ body {
   margin: 0;
   font-size: 16.5px;
   font-weight: 700;
-  letter-spacing: 0.2px;
 }
 
 .hero p {
@@ -86,19 +129,13 @@ body {
   opacity: 0.9;
 }
 
-.hero-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 12px;
-}
-
 .price {
+  margin-top: 12px;
   font-size: 14.5px;
   font-weight: 600;
 }
 
-/* ===== CTA BUTTON ===== */
+/* ===== CTA ===== */
 .redeem {
   margin: 20px 16px 16px;
   background: var(--purple);
@@ -164,11 +201,9 @@ body {
   line-height: 1.4;
 }
 
-/* ===== TICKET ID ROW ===== */
 .ticket-id-row {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
   gap: 14px;
 }
 
@@ -178,7 +213,7 @@ body {
   padding-top: 18px;
 }
 
-/* ===== EXTRA SCROLL SPACE ===== */
+/* ===== EXTRA SCROLL ===== */
 .scroll-spacer {
   height: 220px;
 }
@@ -187,7 +222,19 @@ body {
 
 <body>
 
-<div class="topbar"></div>
+<div class="topbar">
+  <div class="back">←</div>
+
+  <div class="title-wrap">
+    Viralliset Vanhojenjatkot @ Finlandia-Talo
+  </div>
+
+  <div class="icons">
+    📍
+    🔍
+    ❤️
+  </div>
+</div>
 
 <div class="wrapper">
   <div class="card">
@@ -196,10 +243,7 @@ body {
       <h1>EYL – Ennakkolippu 6.2.2026</h1>
       <p>Vanhojen Tanssit @ Finlandia-Talo</p>
       <p class="sub">Loput liput myydään normaali linkistä</p>
-
-      <div class="hero-footer">
-        <div class="price">45,00 €</div>
-      </div>
+      <div class="price">45,00 €</div>
     </div>
 
     <div class="redeem">MARK TICKET AS USED</div>
@@ -219,7 +263,6 @@ body {
     </div>
 
     <div class="section">
-
       <div class="ticket-id-row">
         <div>
           <div class="label">Ticket ID</div>
@@ -235,7 +278,6 @@ body {
         Viralliset Vanhojenjatkot @ Finlandia-Talo – PE<br>
         6.2.2026
       </div>
-
     </div>
 
   </div>
