@@ -14,6 +14,7 @@
 
 :root {
   --purple: #5b3aa4;
+  --cyan: #3fd0d4;
   --purple-light: #f1edfb;
   --bg: #f2f2f7;
   --text-main: #1c1c1e;
@@ -47,7 +48,6 @@ body {
   opacity: 0.95;
 }
 
-/* title container with fade */
 .title-wrap {
   flex: 1;
   position: relative;
@@ -58,7 +58,6 @@ body {
   padding-right: 10px;
 }
 
-/* fade effect */
 .title-wrap::after {
   content: "";
   position: absolute;
@@ -135,7 +134,7 @@ body {
   font-weight: 600;
 }
 
-/* ===== CTA ===== */
+/* ===== CTA BUTTON ===== */
 .redeem {
   margin: 20px 16px 16px;
   background: var(--purple);
@@ -147,6 +146,12 @@ body {
   font-weight: 700;
   letter-spacing: 0.7px;
   box-shadow: 0 6px 14px rgba(91,58,164,0.35);
+  transition: background 0.25s ease, box-shadow 0.25s ease;
+}
+
+.redeem.cyan {
+  background: var(--cyan);
+  box-shadow: 0 6px 14px rgba(63,208,212,0.4);
 }
 
 /* ===== NOTE ===== */
@@ -246,7 +251,9 @@ body {
       <div class="price">45,00 €</div>
     </div>
 
-    <div class="redeem">MARK TICKET AS USED</div>
+    <div class="redeem" id="redeemBtn">
+      MARK TICKET AS USED
+    </div>
 
     <div class="note">
       <span>ⓘ</span>
@@ -284,6 +291,15 @@ body {
 </div>
 
 <div class="scroll-spacer"></div>
+
+<script>
+  const redeemBtn = document.getElementById("redeemBtn");
+
+  redeemBtn.addEventListener("click", () => {
+    redeemBtn.textContent = "CLICK AGAIN";
+    redeemBtn.classList.add("cyan");
+  });
+</script>
 
 </body>
 </html>
