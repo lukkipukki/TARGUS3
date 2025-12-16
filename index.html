@@ -2,8 +2,7 @@
 <html lang="fi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Ticket</title>
 
 <style>
@@ -15,10 +14,8 @@
 :root {
   --purple: #5b3aa4;
   --cyan: #3fd0d4;
-  --purple-light: #f1edfb;
   --bg: #f2f2f7;
   --text-main: #1c1c1e;
-  --text-sub: #6b6b6b;
 }
 
 body {
@@ -36,33 +33,15 @@ body {
   background: var(--purple);
   display: flex;
   align-items: center;
-  padding-left: 8px;
-  padding-right: 12px;
+  padding: 0 12px;
   color: #fff;
 }
 
-.back {
-  font-size: 20px;
-  padding: 0 10px;
-}
-
-.title-wrap {
-  flex: 1;
-  font-size: 15px;
-  font-weight: 600;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-.icons {
-  display: flex;
-  gap: 14px;
-}
+.back { font-size: 20px; padding-right: 10px; }
+.title-wrap { flex: 1; font-size: 15px; font-weight: 600; }
 
 /* ===== LAYOUT ===== */
-.wrapper {
-  padding: 16px;
-}
+.wrapper { padding: 16px; }
 
 .card {
   background: #fff;
@@ -77,32 +56,17 @@ body {
   padding: 18px;
   color: #fff;
   background:
-    linear-gradient(
-      to bottom,
-      rgba(80,60,150,0.25),
-      rgba(80,60,150,0.92)
-    ),
-    url("hero.jpg");
+    linear-gradient(to bottom, rgba(80,60,150,0.25), rgba(80,60,150,0.92)),
+    url("hero.png");
   background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
 }
 
-.hero h1 {
-  margin: 0;
-  font-size: 16.5px;
-}
-
-.hero p {
-  margin: 4px 0 0;
-  font-size: 13.5px;
-}
-
-.price {
-  margin-top: 12px;
-  font-weight: 600;
-}
+.hero h1 { margin: 0; font-size: 16.5px; }
+.hero p { margin: 4px 0 0; font-size: 13.5px; }
+.price { margin-top: 12px; font-weight: 600; }
 
 /* ===== CTA BUTTON ===== */
 .redeem {
@@ -115,14 +79,11 @@ body {
   font-size: 15px;
   font-weight: 700;
   cursor: pointer;
-  transition: background 0.25s ease;
 }
 
-.redeem.cyan {
-  background: var(--cyan);
-}
+.redeem.cyan { background: var(--cyan); }
 
-/* ===== OVERLAY & SVG ANIMATION ===== */
+/* ===== OVERLAY ===== */
 .overlay {
   position: fixed;
   inset: 0;
@@ -139,52 +100,50 @@ body {
 
 .overlay.active {
   opacity: 1;
+  pointer-events: auto;
 }
 
 .overlay.exit {
   opacity: 0;
 }
 
-.svg-wrap {
-  width: 160px;
-  height: 160px;
-  animation: scaleIn 0.45s cubic-bezier(.2,1.4,.4,1);
+/* ===== VIDEO-STYLE SVG ANIMATION ===== */
+.video-anim {
+  animation: containerIn 0.4s cubic-bezier(.2,1.4,.4,1);
 }
 
-.overlay.exit .svg-wrap {
-  animation: scaleOut 0.35s ease forwards;
+.overlay.exit .video-anim {
+  animation: containerOut 0.35s ease forwards;
 }
 
-@keyframes scaleIn {
-  from { transform: scale(0.6); opacity: 0; }
+@keyframes containerIn {
+  from { transform: scale(0.85); opacity: 0; }
   to   { transform: scale(1); opacity: 1; }
 }
 
-@keyframes scaleOut {
+@keyframes containerOut {
   from { transform: scale(1); opacity: 1; }
-  to   { transform: scale(0.85); opacity: 0; }
+  to   { transform: scale(0.9); opacity: 0; }
 }
 
-/* SVG stroke animation */
-.circle {
-  stroke-dasharray: 440;
-  stroke-dashoffset: 440;
-  animation: drawCircle 0.6s ease forwards;
+.part {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: partIn 0.35s ease forwards;
 }
 
-.check {
-  stroke-dasharray: 120;
-  stroke-dashoffset: 120;
-  animation: drawCheck 0.4s ease forwards;
-  animation-delay: 0.35s;
-}
+.p1 { animation-delay: 0.05s; }
+.p2 { animation-delay: 0.1s; }
+.p3 { animation-delay: 0.18s; }
+.p4 { animation-delay: 0.26s; }
+.p5 { animation-delay: 0.32s; }
+.p6 { animation-delay: 0.4s; }
 
-@keyframes drawCircle {
-  to { stroke-dashoffset: 0; }
-}
-
-@keyframes drawCheck {
-  to { stroke-dashoffset: 0; }
+@keyframes partIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 </style>
 </head>
@@ -194,7 +153,6 @@ body {
 <div class="topbar">
   <div class="back">←</div>
   <div class="title-wrap">Viralliset Vanhojenjatkot</div>
-  <div class="icons">📍 🔍 ❤️</div>
 </div>
 
 <div class="wrapper">
@@ -213,28 +171,24 @@ body {
   </div>
 </div>
 
-<!-- OVERLAY WITH SVG -->
+<!-- OVERLAY WITH VIDEO SVG -->
 <div class="overlay" id="successOverlay">
-  <div class="svg-wrap">
-    <svg viewBox="0 0 120 120" width="160" height="160">
-      <circle
-        class="circle"
-        cx="60"
-        cy="60"
-        r="52"
-        fill="none"
-        stroke="#3fd0d4"
-        stroke-width="8"
-      />
-      <path
-        class="check"
-        d="M35 62 L54 78 L85 45"
-        fill="none"
-        stroke="#3fd0d4"
-        stroke-width="8"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      />
+  <div class="video-anim">
+    <svg viewBox="0 0 200 200" width="180" height="180">
+      <rect x="10" y="10" rx="18" ry="18" width="180" height="180" fill="#ffffff"/>
+
+      <rect class="part p1" x="10" y="10" width="70" height="55" fill="#ff8a00"/>
+      <rect class="part p2" x="120" y="10" width="70" height="55" fill="#ff8a00"/>
+
+      <rect class="part p3"
+            x="85" y="20" width="30" height="30"
+            fill="#4c63ff"
+            transform="rotate(45 100 35)" />
+
+      <polygon class="part p4" points="10,65 80,65 10,135" fill="#5a3a2e"/>
+      <polygon class="part p5" points="190,65 120,65 190,135" fill="#5a3a2e"/>
+
+      <rect class="part p6" x="10" y="135" width="180" height="55" fill="#d32f2f"/>
     </svg>
   </div>
 </div>
@@ -250,8 +204,7 @@ redeemBtn.addEventListener("click", () => {
     redeemBtn.textContent = "CLICK HERE";
     redeemBtn.classList.add("cyan");
     step = 1;
-  } 
-  else if (step === 1) {
+  } else if (step === 1) {
     overlay.classList.add("active");
 
     setTimeout(() => {
