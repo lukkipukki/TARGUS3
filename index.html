@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ticket</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial;
+  background: #f2f2f7;
+}
+
+.topbar {
+  height: 56px;
+  background: #5b3aa4;
+}
+
+.wrapper {
+  padding: 16px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+
+/* ===== HERO ===== */
+.hero {
+  height: 170px;
+  padding: 16px;
+  color: white;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(40,30,80,0.15),
+      rgba(40,30,80,0.85)
+    ),
+    url("hero.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.hero p {
+  margin: 2px 0 0;
+  font-size: 13px;
+  opacity: 0.95;
+}
+
+.price {
+  margin-top: 6px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* ===== BUTTON ===== */
+.redeem {
+  margin: 16px;
+  background: #5b3aa4;
+  color: #fff;
+  text-align: center;
+  padding: 14px;
+  border-radius: 14px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+}
+
+/* ===== NOTE ===== */
+.note {
+  margin: 0 16px 16px;
+  font-size: 12px;
+  color: #666;
+  display: flex;
+  gap: 6px;
+  line-height: 1.4;
+}
+
+/* ===== ACTIONS ===== */
+.actions {
+  display: flex;
+  gap: 10px;
+  padding: 0 16px 16px;
+}
+
+.action {
+  flex: 1;
+  background: #f3f0fb;
+  border-radius: 12px;
+  padding: 10px 6px;
+  font-size: 12px;
+  text-align: center;
+  color: #5b3aa4;
+  font-weight: 500;
+}
+
+/* ===== DETAILS ===== */
+.section {
+  padding: 0 16px 16px;
+}
+
+.label {
+  font-size: 12px;
+  color: #999;
+  margin-bottom: 4px;
+}
+
+.value {
+  font-size: 14px;
+  font-weight: 500;
+  color: #111;
+}
+</style>
+</head>
+
+<body>
+
+<div class="topbar"></div>
+
+<div class="wrapper">
+  <div class="card">
+
+    <div class="hero">
+      <h1>EYL - Ennakkolippu 6.2.2026</h1>
+      <p>Vanhojen Tanssit @ Finlandia-Talo</p>
+      <div class="price">45,00 €</div>
+    </div>
+
+    <div class="redeem">MARK TICKET AS USED</div>
+
+    <div class="note">
+      ⓘ Ticket must only be used during inspection or while redeeming it.
+      <strong>Do not use the ticket in advance</strong>
+    </div>
+
+    <div class="actions">
+      <div class="action">✉️ Send ticket</div>
+      <div class="action">📅 Add to calendar</div>
+      <div class="action">ℹ️ Show description</div>
+    </div>
+
+    <div class="section">
+      <div class="label">Ticket ID</div>
+      <div class="value">fa14c0850a15a...</div>
+
+      <br>
+
+      <div class="label">Event</div>
+      <div class="value">
+        Viralliset Vanhojenjatkot @ Finlandia-Talo - PE<br>
+        6.2.2026
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
