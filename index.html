@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Ticket</title>
 
+<!-- Material Symbols Rounded -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+
 <style>
 * {
   box-sizing: border-box;
@@ -29,6 +32,17 @@ body {
   padding-bottom: env(safe-area-inset-bottom);
 }
 
+/* ICON BASE */
+.material-symbols-rounded {
+  font-size: 22px;
+  line-height: 1;
+  vertical-align: middle;
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'opsz' 24;
+}
+
 /* ===== TOP BAR ===== */
 .topbar {
   height: calc(56px + env(safe-area-inset-top));
@@ -42,7 +56,7 @@ body {
 }
 
 .back {
-  font-size: 20px;
+  font-size: 24px;
   padding: 0 10px;
   opacity: 0.95;
 }
@@ -73,8 +87,8 @@ body {
 
 .icons {
   display: flex;
-  gap: 14px;
-  font-size: 18px;
+  gap: 16px;
+  font-size: 22px;
   opacity: 0.95;
 }
 
@@ -148,7 +162,6 @@ body {
   transition: background 0.25s ease, box-shadow 0.25s ease;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
-  touch-action: manipulation;
   user-select: none;
 }
 
@@ -188,6 +201,9 @@ body {
   color: var(--purple);
   font-weight: 600;
   white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 /* ===== DETAILS ===== */
@@ -204,7 +220,6 @@ body {
 .value {
   font-size: 14.8px;
   font-weight: 600;
-  color: var(--text-main);
   margin-bottom: 14px;
   line-height: 1.4;
 }
@@ -216,7 +231,7 @@ body {
 }
 
 .copy-icon {
-  font-size: 18px;
+  font-size: 22px;
   opacity: 0.55;
   padding-top: 18px;
 }
@@ -300,11 +315,13 @@ body {
 <body>
 
 <div class="topbar">
-  <div class="back">←</div>
-  <div class="title-wrap">
-    Viralliset Vanhojenjatkot @ Finlandia-Talo
+  <div class="back material-symbols-rounded">arrow_back</div>
+  <div class="title-wrap">Viralliset Vanhojenjatkot @ Finlandia-Talo</div>
+  <div class="icons">
+    <span class="material-symbols-rounded">location_on</span>
+    <span class="material-symbols-rounded">search</span>
+    <span class="material-symbols-rounded">favorite_border</span>
   </div>
-  <div class="icons">📍 🔍 ❤️</div>
 </div>
 
 <div class="wrapper">
@@ -317,12 +334,10 @@ body {
       <div class="price">45,00 €</div>
     </div>
 
-    <div class="redeem" id="redeemBtn">
-      MARK TICKET AS USED
-    </div>
+    <div class="redeem" id="redeemBtn">MARK TICKET AS USED</div>
 
     <div class="note">
-      <span>ⓘ</span>
+      <span class="material-symbols-rounded">info</span>
       <span>
         Ticket must only be used during inspection or while redeeming it.
         <strong>Do not use the ticket in advance</strong>
@@ -330,9 +345,9 @@ body {
     </div>
 
     <div class="actions">
-      <div class="action">✉️ Send ticket</div>
-      <div class="action">📅 Add to calendar</div>
-      <div class="action">ℹ️ Show description</div>
+      <div class="action"><span class="material-symbols-rounded">mail</span>Send ticket</div>
+      <div class="action"><span class="material-symbols-rounded">event</span>Add to calendar</div>
+      <div class="action"><span class="material-symbols-rounded">info</span>Show description</div>
     </div>
 
     <div class="section">
@@ -341,7 +356,7 @@ body {
           <div class="label">Ticket ID</div>
           <div class="value">fa14c0850a15ajk34lace010lep7ba20a</div>
         </div>
-        <div class="copy-icon">📋</div>
+        <div class="copy-icon material-symbols-rounded">content_copy</div>
       </div>
 
       <div class="label">Event</div>
